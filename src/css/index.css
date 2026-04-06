@@ -1,0 +1,78 @@
+.box {
+  background-color: #e0e0e0;
+  border: 2px solid #999;
+  min-height: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 24px;
+  font-weight: bold;
+}
+
+/* DESKTOP */
+.layout {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+  grid-template-areas:
+    "a b c"
+    "d d d";
+  gap: 8px;
+  padding: 16px;
+}
+
+.box-bc-wrap { display: contents; }
+.box-a { grid-area: a; }
+.box-b { grid-area: b; }
+.box-c { grid-area: c; }
+.box-d { grid-area: d; }
+
+@media (max-width: 769px) {
+ .layout {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+     grid-template-areas:
+    "a a d"
+    "b c d";
+    gap: 8px;
+    padding: 16px;
+  }
+  
+  /* A ocupa la primera fila de la columna 1 */
+  .box-a {
+    grid-row: 1;
+    grid-column: 1;
+  }
+  
+  /* El wrap ocupa las filas 2 y 3 de la columna 1 */
+  .box-bc-wrap {
+    display: grid;
+    grid-row: 2 / 4;
+    grid-column: 1;
+    gap: 8px;
+  }
+  
+  /* D ocupa todas las filas de la columna 2 */
+  .box-d {
+    grid-row: 1 / 4;
+    grid-column: 2;
+    height: 100%;
+  }
+  
+  /* Aseguramos que B y C se vean correctamente dentro del wrap */
+  .box-b, .box-c {
+    min-height: 100px;
+  }
+}
+
+@media (max-width: 480px) {
+  .layout {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+  .box-bc-wrap {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+}

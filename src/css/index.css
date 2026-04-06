@@ -30,15 +30,19 @@
  .layout {
     display: grid;
     grid-template-columns: 1fr 1fr;
-     grid-template-areas:
+    grid-template-areas:
     "a a d"
     "b c d";
     gap: 8px;
     padding: 16px;
-  }
+  } 
   
   .box-a {
     grid-row: 1;
+    grid-column: 1;
+  }
+  .box-b {
+    grid-row: 2;
     grid-column: 1;
   }
   
@@ -55,9 +59,6 @@
     height: 100%;
   }
   
-  .box-b, .box-c {
-    min-height: 100px;
-  }
 }
 
 @media (max-width: 480px) {
